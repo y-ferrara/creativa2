@@ -313,6 +313,7 @@ def front():
         product=product,
         details=details,
         reviews={"R1":"OK"},
+        team_id=os.environ.get("TEAM_ID", "X"),
         user=user)
 
 
