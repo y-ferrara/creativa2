@@ -1,0 +1,42 @@
+
+networks:
+  cdps-net:
+    driver: bridge
+
+services:
+
+  productpage:
+    image: cdps-productpage:g18
+    container_name: productpage_cdps_18
+    ports:
+      - "9090:9080"
+    depends_on:
+      - details
+      - reviews
+    networks:
+      - cdps-net
+
+  details:
+    image: cdps-details:g18
+    container_name: details_cdps_18
+    networks:
+      - cdps-net
+
+  ratings:
+    image: cdps-ratings:g18
+    container_name: ratings_cdps_18
+    networks:
+      - cdps-net
+
+  reviews:
+    image: cdps-reviews:g18
+    container_name: reviews_cdps_18
+    environment:
+      - SERVICE_VERSION=v3  # cambiar a v1 o v3
+      - ENABLE_RATINGS=true
+      - STAR_COLOR=red
+    depends_on:
+      - ratings
+    networks:
+      - cdps-net
+

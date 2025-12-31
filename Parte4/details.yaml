@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: details
+  namespace: cdps-18
+  labels:
+    app: details
+    service: details
+spec:
+  type: ClusterIP
+  ports:
+  - port: 7070
+    name: http
+  selector:
+    app: details
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: details-v1
+  namespace: cdps-18
+  labels:
+    app: details
+    version: v1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: details
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: details
+        version: v1
+    spec:
+      containers:
+      - name: details
+        image: yagoferrara/practica_creativa2:details
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7070
+        securityContext:
+          runAsUser: 1000
+---
