@@ -4,7 +4,7 @@ from subprocess import call
 
 # Comprobar argumento
 if len(sys.argv) != 2 or sys.argv[1] not in ["v1", "v2", "v3"]:
-    print("Uso: python3 switch_reviews_version.py v1|v2|v3")
+    print("Uso: python3 cambiar_version.py v1|v2|v3")
     sys.exit(1)
     
 VERSION = sys.argv[1]
