@@ -41,7 +41,7 @@ CMD ["ruby", "details.rb", "7070"]
 """
 
 ratings_dockerfile ="""
-FROM node:20-slim
+FROM node:24-slim
 
 WORKDIR /opt/microservices
 
