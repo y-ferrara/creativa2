@@ -1,0 +1,26 @@
+namespace: cdps-18
+
+productpage:
+  name: productpage
+  image: yagoferrara/practica_creativa2:productpage
+  replicas: 1
+  port: 9080
+  serviceType: LoadBalancer
+
+details:
+  name: details
+  image: yagoferrara/practica_creativa2:details
+  replicas: 4
+  port: 7070
+
+reviews:
+  name: reviews
+  image: yagoferrara/practica_creativa2:reviews-v3
+  replicas: 1
+  port: 9080
+
+ratings:
+  name: ratings
+  image: yagoferrara/practica_creativa2:ratings
+  replicas: 3
+  port: 9080
